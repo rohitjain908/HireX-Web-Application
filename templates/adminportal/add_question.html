@@ -1,0 +1,19 @@
+{% extends 'adminportal/base_admin.html'%}
+
+{% block body_block %}
+  <form method="post" action="{% url 'add_question' %}">
+    {% csrf_token %}
+    <input type="text" name="question" placeholder="Question"><br><br>
+    <input type="text" name="option_A" placeholder="First Option"><br><br>
+    <input type="text" name="option_B" placeholder="Second Option"><br><br>
+    <input type="text" name="option_C" placeholder="Third Option"><br><br>
+    <input type="text" name="option_D" placeholder="Fourth Option"><br><br>
+    <input type="text" name="correct_answer" placeholder="Correct Answer"><br><br>
+    <input type="text" name="tag" placeholder="Tag"><br><br>
+
+    <input type="submit" value="Add">
+    
+
+  </form>
+
+{% endblock %}

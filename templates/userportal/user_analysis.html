@@ -1,0 +1,40 @@
+{% extends 'userportal/baseuser.html' %}
+{% load static %}
+{% block header_block %}
+<link rel="stylesheet" href="{% static 'css/userportal/user_analysis.css' %}">
+
+{% endblock %}
+
+{% block body_block %}
+  <div class= "analysis-content">
+    <ul>
+      <li class="table-header">
+        <div class="col colu-0">S. No.</div>
+        <div class="col colu-2" id = "date_header">Date</div>
+        <div class="col colu-4">Total Score</div>
+        <div class="col colu-5">Percentage</div>
+      </li>
+    </ul>
+    {% for result in quiz_results %}
+      <ul class="responsive-table">    
+        <div class="tableRows">
+          <li class="table-row">      
+            <div class="col colu-0" data-label="SNo">
+              {{ forloop.counter }}.        
+            </div>
+            <div class="col colu-2" id = "date" data-label="Date">
+              {{result.date}}
+            </div>
+            <div class="col colu-4" data-label="TotalScore">
+              {{result.score}}/{{result.max_score}}
+            </div>
+            <div class="col colu-6" data-label="Percentage">
+              {{result.precentage}}
+            </div>
+          </li>
+        </div>
+      </ul> 
+    {% endfor %}
+  </div>
+
+{% endblock %}

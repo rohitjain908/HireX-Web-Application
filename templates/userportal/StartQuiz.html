@@ -1,0 +1,14 @@
+{% extends 'userportal/baseuser.html' %}
+
+{% block body_block %}
+  <h3>Instructions:-</h3>
+  <ol>
+    <li>Start your quiz assigned by the compnay</li>
+    <li>In this quiz you have 20 single choice question</li>
+    <li>Time duration of this quiz is 30 minutes</li>
+    <li>Each question max score is 5 points</li>
+    <li>No negative marking in the quiz</li>
+  </ol>
+  <button><a href="{% url 'start' %}">Start Now</a></button>
+
+{% endblock %}

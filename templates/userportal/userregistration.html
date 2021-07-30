@@ -1,0 +1,33 @@
+{% extends 'userportal/baseuser.html' %}
+
+{% block body_block %}
+  <form action="{% url 'user_profile' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="first_name" placeholder="FIRST_NAME"/><br><br>
+    <input type="text" name="last_name" placeholder="LAST_NAME"/><br><br>
+    <input type="email" name="email" placeholder="EMAIL"/><br><br>
+    <label for="stream"> Choose Your Stream:</label>
+    <select class="stream" id="stream" name="stream">
+      <option>Cse</option>
+      <option>ECE</option>
+      <option>EEE</option>
+      <option>Chemical</option>
+      <option>Mechanical</option>
+      <option>Other</option>
+    </select>
+    <br><br>
+    <label for="graduation"> Choose Your Year Of Graduation:</label>
+    <select class="graduataion" id="graduation" name="graduation">
+      <option>2020</option>
+      <option>2021</option>
+      <option>2022</option>
+      <option>2023</option>
+      <option>2024</option>
+      <option>2025</option>
+    </select><br><br>
+    <label for="dob"> Fill Your Date of birth:</label>
+    <input type="date" name="dob" placeholder="Date Of Birth" id="dob"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+{% endblock %}

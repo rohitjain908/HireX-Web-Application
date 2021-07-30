@@ -1,0 +1,14 @@
+{% extends 'userportal/baseuser.html' %}
+
+{% block body_block %}
+  <h2>Upload Resume</h2>
+  <form method="post"  enctype="multipart/form-data" action="{% url 'upload_resume' %}">
+    {% csrf_token %}
+    <input type="file" name="document">
+    <button type="submit">Upload Resume</button>
+  </form>
+  {% if url %}
+    <p>Uploaded file: <a href="{{url}}">Your Resume</a></p>
+  {% endif %}
+
+{% endblock %}

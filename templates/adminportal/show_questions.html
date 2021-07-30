@@ -1,0 +1,17 @@
+{% extends 'adminportal/base_admin.html'%}
+
+{% block body_block %}
+  {% for List in questions_list%}
+    <ul>
+      <li>question.{{forloop.counter}} :{{List.0.Question}} ?</li>
+      <li>Option A :{{List.0.Option_A}}</li>
+      <li>Option B :{{List.0.Option_B}}</li>
+      <li>Option C :{{List.0.Option_C}}</li>
+      <li>Option D :{{List.0.Option_D}}</li>
+      <li>Correct Answer :{{List.0.Correct_Answer}}</li>
+      <button><a href="edit/{{List.1}}">Edit</a></button>
+      <button><a href="delete/{{List.1}}">Delete</a></button>
+    </ul>
+  {% endfor %}
+
+{% endblock %}

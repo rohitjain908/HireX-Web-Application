@@ -1,0 +1,25 @@
+{% extends 'adminportal/base_admin.html'%}
+
+{% block body_block %}
+  {% for key,value in questions_dict %}
+    <h4>{{key}}</h4>
+    <!-- <p>{{value.0.Question}}</p> -->
+    <button><a href="questions/{{key}}">View Questions</a></button>
+    <!-- <button onclick="myfunctionName('John', 20)">Click</button> -->
+  {% endfor %}
+
+  <br><br><br>
+  <div>The set Criteria: {{criteria}} %</div>
+  <br>
+  <form method="post" action="{% url 'eligible_criteria' %}">
+    {% csrf_token %}
+    <h5><label for="criteria">Eligiblity Criteria:-</label></h5>
+    <input type="text" name="criteria" id="criteria">
+    <h5><label for="count_of_question">No. of question in quiz:-</label></h5>
+    <input type="text" name="count_of_question" id="count_of_question">
+    <br><br>
+    <input type="submit" value="submit">
+  </form>
+{% endblock %}
+
+

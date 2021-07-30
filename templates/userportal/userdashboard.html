@@ -1,0 +1,151 @@
+{% extends 'userportal/baseuser.html' %}
+{% load static %}
+
+{% block header_block %}
+  <link rel="stylesheet" href="{% static 'css/userportal/userdashboard.css' %}"/>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+{% endblock %}
+
+{% block body_block %}
+
+  <div class="dashboard-content">
+
+    <!-- this is for register button -->
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne"
+            aria-expanded="false"
+            aria-controls="flush-collapseOne"
+            
+          >
+            Register      
+          </button>
+        </h2>
+
+        <div
+          id="flush-collapseOne"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <button class="register-btn"><a href="{% url 'user_registration' %}">Register</a></button>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- this is for register button -->
+      <!-- sources of this code are availabe in resources file  -->
+
+
+      <!-- this is for Upload Resume button -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo"
+            aria-expanded="false"
+            aria-controls="flush-collapseTwo"
+          >
+            Upload Resume
+          </button>
+        </h2>
+
+        <div
+          id="flush-collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingTwo"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <button class="upload-btn"><a href="{% url 'upload_resume' %}">Upload</a></button>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- this is for Upload Resume button -->
+
+
+      <!-- this is for Start Quiz button -->
+      
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThree">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseThree"
+            aria-expanded="false"
+            aria-controls="flush-collapseThree"
+          >
+            Start Quiz
+          </button>
+        </h2>
+
+        <div
+          id="flush-collapseThree"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingThree"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <button class="start-quiz-btn"><a href="{% url 'start_quiz' %}">Start Quiz</a></button>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- this is for Start Quiz button -->
+
+
+      <!-- this is for Results button -->
+      
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFour">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseFour"
+            aria-expanded="false"
+            aria-controls="flush-collapseFour"
+          >
+            Results
+          </button>
+        </h2>
+
+        <div
+          id="flush-collapseFour"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingFour"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <button class="result-btn"><a href="{% url 'user_analysis' %}">Result</a></button>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- this is for Results button -->
+
+      
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block script_block %}
+  
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'userportal/baseuser.html' %}
+{% load static %}
+{% load js %}
+
+{% block body_block %}
+
+  <h3 id="question">question</h3>
+  <input type="radio" name="option" id="option_A">
+  <label for="option_A" id="Option_A">0-25</label><br><br>
+  <input type="radio" name="option" id="option_B">
+  <label for="option_B" id="Option_B">0-25</label><br><br>
+  <input type="radio" name="option" id="option_C">
+  <label for="option_C" id="Option_C">0-25</label><br><br>
+  <input type="radio" name="option" id="option_D">
+  <label for="option_D" id="Option_D">0-25</label><br><br>
+  <!-- <button onclick="prev_question()">Prev</button> -->
+  <button onclick="calc()">Submit Answer</button><br><br>
+  <button onclick="next_question()">Next</button><br><br>
+  <p id="message"></p>
+
+    
+  <script>
+    var questionsData = JSON.parse("{{ questionsData|escapejs }}");
+    questions = JSON.parse(questionsData);
+    var count=0;
+    var total=questions.length
+    var score=0;
+    var total_score=total*10;
+
+    function next_question()
+    {
+      if(count==total)
+      {
+        sessionStorage.setItem("score", score);//we can set some global variable in javascript(like in django we store global variable using django session similarly here we can use javascript session)
+        sessionStorage.setItem("tot",total*10);
+        location.href = "end_quiz";//this is like return whenever we call location.href then our command goes at that location in our project
+      }
+      let ques=questions[count].fields.Question;
+
+      let [first, second, third, fourth] = [questions[count].fields.Option_A, questions[count].fields.Option_B, questions[count].fields.Option_C, questions[count].fields.Option_D];
+
+      document.getElementById("option_A").checked=false;
+      document.getElementById("option_B").checked=false;
+      document.getElementById("option_C").checked=false;
+      document.getElementById("option_D").checked=false;
+
+
+      document.getElementById("question").innerHTML=ques;
+      document.getElementById("Option_A").innerHTML=first;
+      document.getElementById("Option_B").innerHTML=second;
+      document.getElementById("Option_C").innerHTML=third;
+      document.getElementById("Option_D").innerHTML=fourth;
+      count++;
+
+    }
+
+    function calc()
+    {
+      var user_answer="NULL";
+      var correct_answer=questions[count-1].fields.Correct_Answer;
+
+      if(document.getElementById('option_A').checked)
+      {
+        user_answer=document.getElementById('Option_A').innerText
+        //document.getElementById('message').innerText="Submitted Succesfully";
+        //document.getElementById('message').innerText="submit answer is "+ user_answer;
+      }
+      else if(document.getElementById('option_B').checked)
+      {
+        user_answer=document.getElementById('Option_B').innerText
+        //document.getElementById('message').innerText="Submitted Succesfully";
+      }
+      else if(document.getElementById('option_C').checked)
+      {
+        user_answer=document.getElementById('Option_C').innerText
+        //document.getElementById('message').innerText="Submitted Succesfully";
+      }
+      else if(document.getElementById('option_D').checked)
+      {
+        user_answer=document.getElementById('Option_D').innerText
+        //document.getElementById('message').innerText="Submitted Succesfully";
+      }
+      
+      else
+      {
+        document.getElementById('message').innerText="Please Select an option";
+      }
+
+      if(user_answer!="NULL")
+      {
+        if(user_answer==correct_answer) score=score+10;
+      }
+
+
+    } 
+  </script>
+{% endblock %}
+

@@ -1,0 +1,53 @@
+{% extends 'adminportal/base_admin.html' %}
+{% load static %}
+
+{% block header_block %}
+  <link rel="stylesheet" href="{% static 'css/adminportal/eligible_candidates.css' %}">
+
+{% endblock %}
+
+{% block body_block %}
+<div class='candidates_content'>
+  <h1>Eligible Candidates</h1>
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col colu-0">S. No.</div>
+      <div class="col colu-2" id = "username_header">Name</div>
+      <div class="col colu-2" id = "date_header">Email</div>
+      <div class="col colu-4">Percentage</div>
+      <div class="col colu-4">Graduation Year</div>
+      <div class="col colu-5">Resume</div>
+    </li>
+  </ul>
+  {% for candidate in Eligible %}
+    <ul class="responsive-table">    
+      <div class="tableRows">
+        <li class="table-row">      
+          <div class="col colu-0" data-label="SNo">
+            {{ forloop.counter }}.        
+          </div>
+          
+          <div class="col colu-2" id = "username" data-label="username">
+            {{candidate.name}}
+          </div>
+  
+          <div class="col colu-2" id = "date" data-label="Date">
+            {{candidate.email}}
+          </div>
+
+          <div class="col colu-4" data-label="TotalScore">
+            {{candidate.percentage}}
+          </div>
+  
+          <div class="col colu-4" data-label="TotalScore">
+            {{candidate.graduation_year}}
+          </div>
+          <div class="col colu-6" data-label="Percentage">
+            <a href="{{candidate.resume.url}}">{{candidate.name}}'s Resume</a>
+          </div>
+        </li>
+      </div>
+    </ul> 
+  {% endfor %}
+  </div>
+{% endblock %}
